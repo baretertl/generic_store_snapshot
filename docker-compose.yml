@@ -1,0 +1,22 @@
+version: '2'
+services:
+  redis:
+    restart: always
+    build: ./redis
+    volumes:
+      - ./redis/data:/data
+    ports: 
+      - '6379:6379'
+    command: redis-server /etc/redis/redis.conf
+  web:
+    restart: always
+    build: ./web
+    ports: 
+      - '8000:8000'
+    links:
+      - redis:redis
+    volumes:
+      - ./web/app_code:/app_code
+    env_file: ./web/web.env
+    command: python manage.py runserver 0.0.0.0:8000
+    #command: bash -c "while true; do echo 'Hit CTRL+C'; sleep 1000; done"

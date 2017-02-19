@@ -1,0 +1,11 @@
+#configuration files
+redis.conf
+web.env
+
+#binary files
+*.pyc
+*.sqlite3
+*.rdb
+
+#fixture files
+*fixtures*
