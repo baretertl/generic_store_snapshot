@@ -23,7 +23,9 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ['DJANGO_DEBUG']) == 1
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+  '127.0.0.1',
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -44,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+  'django.middleware.common.BrokenLinkEmailsMiddleware',
   'django.middleware.security.SecurityMiddleware',
   'django.contrib.sessions.middleware.SessionMiddleware',
   'django.middleware.common.CommonMiddleware',
@@ -154,3 +157,11 @@ CELERY_IMPORTS = ("app_mailer.tasks", )
 #key constants for sessions
 SESSION_KEY = {}
 SESSION_KEY["CURRENT_LOCALE"] = "CURRENT_LOCALE"
+
+#error email handling
+ADMINS = [
+  ('Chang Zheng', 'chang.s.zheng@gmail.com'),
+]
+MANAGERS = [
+  ('Chang Zheng', 'chang.s.zheng@gmail.com'),
+]

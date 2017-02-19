@@ -17,7 +17,6 @@ def send_email_plain(request, format='json'):
 											)
 		#encode the object
 		app_mailer_task.delay(json.dumps(email, cls=AppMailerEncoder))
-		print(json.dumps(email, cls=AppMailerEncoder))
 		return Response(status=status.HTTP_200_OK)
 
 	except AppMailerException as e:
@@ -35,7 +34,6 @@ def send_email_html(request, format='json'):
 											)
 		#encode the object
 		app_mailer_task.delay(json.dumps(email, cls=AppMailerEncoder))
-		print(json.dumps(email, cls=AppMailerEncoder))
 		return Response(status=status.HTTP_200_OK)
 
 	except AppMailerException as e:
