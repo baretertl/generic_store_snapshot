@@ -37,6 +37,8 @@ INSTALLED_APPS = [
   'rest_framework',
   'account',
   'app_locale',
+  'app_mailer',
+  'email_task',
   'menu',
   'user_interface',
 ]
@@ -147,7 +149,7 @@ CELERY_RESULT_BACKEND = 'django-db'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_IMPORTS = ("email_task.tasks", )
+CELERY_IMPORTS = ("app_mailer.tasks", )
 
 #key constants for sessions
 SESSION_KEY = {}
