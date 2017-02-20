@@ -8,7 +8,7 @@ from .serializers import AppLocaleNameSerializer
 
 #get current locale in session 
 @api_view(['GET'])
-def current(request, format='json'):
+def get_locale(request, format='json'):
 	if not SESSION_KEY["CURRENT_LOCALE"] in request.session:
 		request.session[SESSION_KEY["CURRENT_LOCALE"]] = LANGUAGE_CODE
 
@@ -17,7 +17,7 @@ def current(request, format='json'):
 	return Response(app_locale_ser.data, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
-def set(request, format='json'):
+def set_locale(request, format='json'):
 	try:
 		app_locale_obj = AppLocaleName.objects.get(locale_code=request.data.get("locale_code"))
 		app_locale_ser = AppLocaleNameSerializer(app_locale_obj)

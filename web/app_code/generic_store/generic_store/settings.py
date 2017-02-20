@@ -39,6 +39,7 @@ INSTALLED_APPS = [
   'rest_framework',
   'account',
   'app_locale',
+  'app_constant',
   'app_mailer',
   'email_task',
   'menu',

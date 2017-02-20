@@ -1,9 +1,9 @@
 from django.conf.urls import url
-from . import views
+from .views import create, login, logout, UserDetail
 
 urlpatterns = [
-	url(r'^create/$', views.create),
-	url(r'^login/$', views.login),
-	url(r'^logout/$', views.logout),
-	url(r'^(?P<pk>[0-9]+)$', views.UserDetail.as_view()),
+	url(r'^create/$', create),
+	url(r'^login/$', login),
+	url(r'^logout/$', logout),
+	url(r'^(?P<pk>[0-9]+)$', UserDetail.as_view()),
 ]

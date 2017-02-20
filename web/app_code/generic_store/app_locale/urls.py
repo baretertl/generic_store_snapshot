@@ -1,14 +1,14 @@
 from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
-from . import views
+from .views import get_locale, set_locale, AppLocaleNameViewSet
 
 #routers for viewsets
 router = DefaultRouter()
-router.register(r'AppLocaleName', views.AppLocaleNameViewSet)
+router.register(r'AppLocaleName', AppLocaleNameViewSet)
 
 #url patterns
 urlpatterns = [
-	url(r'get/$', views.current),
-	url(r'set/$', views.set),
+	url(r'get_locale/$', get_locale),
+	url(r'set_locale/$', set_locale),
   url(r'^', include(router.urls)),
 ]

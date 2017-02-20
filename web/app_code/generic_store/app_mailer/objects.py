@@ -13,78 +13,98 @@ class AppMailer(object):
 		if "from_email" in kwargs:
 			if isinstance(kwargs["from_email"], str):
 				self.from_email = kwargs["from_email"]
+
 			else:
 				raise AppMailerException("From Email field must be a string")
+
 		else:
 			self.from_email = DEFAULT_FROM_EMAIL
 
 		if "to" in kwargs:
 			if isinstance(kwargs["to"], list):
 				self.to = kwargs["to"]
+
 			else:
 				raise AppMailerException("To field must be a list")
+
 		else:
 			self.to = []		
 
 		if "cc" in kwargs:
 			if isinstance(kwargs["cc"], list):
 				self.cc = kwargs["cc"]
+
 			else:
 				raise AppMailerException("CC field must be a list")
+
 		else:
 			self.cc = []		
 
 		if "bcc" in kwargs:
 			if isinstance(kwargs["bcc"], list):
 				self.bcc = kwargs["bcc"]
+
 			else:
 				raise AppMailerException("BCC field must be a list")
+
 		else:
 			self.bcc = []
 
 		if "subject" in kwargs:
 			if isinstance(kwargs["subject"], str):
 				self.subject = kwargs["subject"]
+
 			else:
 				raise AppMailerException("Subject field must be a string")
+
 		else:
 			self.subject = ""
 
 		if "body" in kwargs:
 			if isinstance(kwargs["body"], str):
 				self.body = kwargs["body"]
+
 			else:
 				raise AppMailerException("Body field must be a string")
+
 		else:
 			self.body = ""
 
 		if "text_template" in kwargs:
 			if isinstance(kwargs["text_template"], str):
 				self.text_template = kwargs["text_template"]
+
 			elif kwargs["text_template"] is None:
 				self.text_template = None
+
 			else:
 				raise AppMailerException("Text Template field must be a string")
+
 		else:
 			self.text_template = None
 
 		if "text_object" in kwargs:
 			self.text_object = kwargs["text_object"]
+
 		else:
 			self.text_object = None
 
 		if "html_template" in kwargs:
 			if isinstance(kwargs["html_template"], str):
 				self.html_template = kwargs["html_template"]
+
 			elif kwargs["html_template"] is None:
 				self.html_template = None
+
 			else:
 				raise AppMailerException("Html Template field must be a string")
+
 		else:
 			self.html_template = None
 
 		if "html_object" in kwargs:
 			self.html_object = kwargs["html_object"]
+			
 		else:
 			self.html_object = None
 
