@@ -40,9 +40,9 @@ INSTALLED_APPS = [
   'account',
   'app_locale',
   'app_constant',
-  'app_mailer',
-  'email_task',
+  'app_mailer',  
   'menu',
+  'store_info',
   'user_interface',
 ]
 
@@ -112,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -153,11 +153,11 @@ CELERY_RESULT_BACKEND = 'django-db'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_IMPORTS = ("app_mailer.tasks", )
+CELERY_IMPORTS = ('app_mailer.tasks', )
 
 #key constants for sessions
 SESSION_KEY = {}
-SESSION_KEY["CURRENT_LOCALE"] = "CURRENT_LOCALE"
+SESSION_KEY['CURRENT_LOCALE'] = 'CURRENT_LOCALE'
 
 #error email handling
 ADMINS = [

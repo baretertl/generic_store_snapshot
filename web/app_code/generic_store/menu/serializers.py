@@ -4,8 +4,8 @@ from .models import Category, CategoryTranslate, Item, ItemTranslate, Variation,
 
 #helper functions for getting translation objects
 def get_current_locale(request):
-	if SESSION_KEY["CURRENT_LOCALE"] in request.session:
-		return request.session[SESSION_KEY["CURRENT_LOCALE"]]
+	if SESSION_KEY['CURRENT_LOCALE'] in request.session:
+		return request.session[SESSION_KEY['CURRENT_LOCALE']]
 
 	else:
 		return LANGUAGE_CODE
@@ -17,7 +17,7 @@ def get_category_translate(request, category_obj):
 		return CategoryTranslate.objects.get(category=category_obj, locale=locale)
 	
 	except CategoryTranslate.DoesNotExist:
-		return CategoryTranslate.objects.get(category=category_obj, locale=LANGUAGE_CODE)
+		return None
 
 def get_item_translate(request, item_obj):
 	#query for object
@@ -26,7 +26,7 @@ def get_item_translate(request, item_obj):
 		return ItemTranslate.objects.get(item=item_obj, locale=locale)
 	
 	except ItemTranslate.DoesNotExist:
-		return ItemTranslate.objects.get(item=item_obj, locale=LANGUAGE_CODE)
+		return None
 
 def get_variation_translate(request, variation_translate):
 	#query for object
@@ -35,7 +35,7 @@ def get_variation_translate(request, variation_translate):
 		return VariationTranslate.objects.get(variation=variation_translate, locale=locale)
 	
 	except VariationTranslate.DoesNotExist:
-		return VariationTranslate.objects.get(variation=variation_translate, locale=LANGUAGE_CODE)
+		return None
 
 #serializer classes
 class VariationSerializer(serializers.ModelSerializer):
@@ -53,7 +53,11 @@ class VariationSerializer(serializers.ModelSerializer):
 	#serializer method fields
 	def get_name(self, obj):
 		request = self.context.get('request')
-		return get_variation_translate(request, obj).name
+		translate_obj = get_variation_translate(request, obj)
+		if not translate_obj is None:
+			return translate_obj.name
+
+		return obj.name
 
 class ItemSerializer(serializers.ModelSerializer):
 	#fields
@@ -74,11 +78,19 @@ class ItemSerializer(serializers.ModelSerializer):
 	#serializer method fields
 	def get_name(self, obj):
 		request = self.context.get('request')
-		return get_item_translate(request, obj).name
+		translate_obj = get_item_translate(request, obj)
+		if not translate_obj is None:
+			return translate_obj.name
+
+		return obj.name
 
 	def get_description(self, obj):
 		request = self.context.get('request')
-		return get_item_translate(request, obj).description
+		translate_obj = get_item_translate(request, obj)
+		if not translate_obj is None:
+			return translate_obj.description
+
+		return obj.description
 
 	def get_item_choice(self, obj):
 		request = self.context.get('request')
@@ -94,20 +106,30 @@ class ItemSerializer(serializers.ModelSerializer):
 
 				#get item translate object
 				item_translate_obj = get_item_translate(request, item.option)
+				if item_translate_obj is None:
+					item_name = item.option.name
+				
+				else:
+					item_name = item_translate_obj.name
+
 				#check if there are variations on this item
 				variation_list = Variation.objects.filter(item=item.option)
 				if variation_list.count() > 0:
 					#get all variations
 					for variation in variation_list:
 						variation_translate_obj = get_variation_translate(request, variation)
-						if not variation_translate_obj is None:
-							ret_list[choice_key].append({"item_id": item.option.id, "item_name": item_translate_obj.name,
-																					 "variation_id": variation.id, "variation_name": variation_translate_obj.name})
+						if variation_translate_obj is None:
+							ret_list[choice_key].append({'item_id': item.option.id, 'item_name': item_name,
+																					 'variation_id': variation.id, 'variation_name': variation.name})
+							
+						else:
+							ret_list[choice_key].append({'item_id': item.option.id, 'item_name': item_name,
+																					 'variation_id': variation.id, 'variation_name': variation_translate_obj.name})
+
 
 				else:
 					#no variations, just add item name					
-					if not item_translate_obj is None:
-						ret_list[choice_key].append({"item_id": item.option.id, "item_name": item_translate_obj.name})
+					ret_list[choice_key].append({'item_id': item.option.id, 'item_name': item_name})
 
 			return ret_list
 
@@ -131,8 +153,16 @@ class CategorySerializer(serializers.ModelSerializer):
 	#serializer method fields
 	def get_name(self, obj):
 		request = self.context.get('request')
-		return get_category_translate(request, obj).name
+		translate_obj = get_category_translate(request, obj)
+		if not translate_obj is None:
+			return translate_obj.name
+
+		return obj.name
 
 	def get_description(self, obj):
 		request = self.context.get('request')
-		return get_category_translate(request, obj).description
+		translate_obj = get_category_translate(request, obj)
+		if not translate_obj is None:
+			return translate_obj.description
+
+		return obj.description

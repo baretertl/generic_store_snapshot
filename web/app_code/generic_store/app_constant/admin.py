@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import AppConstant, AppConstantTranslate
 
-# Register your models here.
 class AppConstantAdmin(admin.ModelAdmin):
 	list_display = ('id', 'constant_code', 'constant_value', 'staff_only', 'superuser_only', )
 

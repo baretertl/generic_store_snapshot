@@ -5,8 +5,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.views import APIView
-from .serializers import UserSerializer
 from .models import User
+from .serializers import UserSerializer
 from .permissions import IsUserSelf
 
 #method for User create
@@ -61,9 +61,9 @@ class UserDetail(APIView):
 		user_obj = self.get_object(request, pk)
 		self.check_object_permissions(self.request, user_obj)
 		put_data = {
-			"email": request.data.get("email", None), 
-			"first_name": request.data.get("first_name", None),
-			"last_name": request.data.get("last_name", None)}
+			'email': request.data.get('email', None), 
+			'first_name': request.data.get('first_name', None),
+			'last_name': request.data.get('last_name', None)}
 
 		user_ser = UserSerializer(user_obj, data=put_data, partial=True)
 		if user_ser.is_valid():
@@ -77,9 +77,9 @@ class UserDetail(APIView):
 		user_obj = self.get_object(request, pk)
 		self.check_object_permissions(self.request, user_obj)
 		patch_data = {
-			"old_password": request.data.get("old_password", None),
-			"password": request.data.get("password", None),
-			"confirm_password": request.data.get("confirm_password", None)}
+			'old_password': request.data.get('old_password', None),
+			'password': request.data.get('password', None),
+			'confirm_password': request.data.get('confirm_password', None)}
 
 		user_ser = UserSerializer(user_obj, data=patch_data, partial=True)
 		if user_ser.is_valid():

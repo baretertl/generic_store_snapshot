@@ -1,7 +1,6 @@
 from django.db import models
 from app_locale.models import AppLocaleName
 
-# Create your models here.
 class AppConstant(models.Model):
 	constant_code = models.CharField(unique=True, max_length=30, db_index=True)
 	constant_value = models.CharField(max_length=500)

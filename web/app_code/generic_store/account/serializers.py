@@ -41,10 +41,10 @@ class UserSerializer(serializers.ModelSerializer):
 
 			#old password passed in, change the password
 			if not instance.check_password(old_pass):
-				raise serializers.ValidationError("Current password is incorrect")
+				raise serializers.ValidationError('Current password is incorrect')
 
 			if new_pass is None:
-				raise serializers.ValidationError("New password needed")
+				raise serializers.ValidationError('New password needed')
 
 			if new_pass != confirm_new_pass:
 				raise serializers.ValidationError('Password does not match')
