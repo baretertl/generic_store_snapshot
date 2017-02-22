@@ -121,11 +121,11 @@ class AppMailer(object):
 				text_body = render_to_string(self.text_template, self.text_object)
 
 			email = EmailMultiAlternatives(subject=self.subject,
-																		 body=text_body,
-																		 from_email=self.from_email,
-																		 to=self.to,
-																		 bcc=self.bcc,
-																		 cc=self.cc)
+			                               body=text_body,
+			                               from_email=self.from_email,
+			                               to=self.to,
+			                               bcc=self.bcc,
+			                               cc=self.cc)
 
 			#add html if available
 			if not self.html_template is None and not self.html_object is None:

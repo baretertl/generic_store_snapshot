@@ -6,5 +6,5 @@ router = DefaultRouter()
 router.register(r'category', CategoryViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls))
+	url(r'^', include(router.urls)),
 ]

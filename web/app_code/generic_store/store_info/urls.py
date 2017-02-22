@@ -9,5 +9,5 @@ router.register(r'contact_info', ContactInfoViewSet)
 router.register(r'store_hour', StoreHourViewSet)
 
 urlpatterns = [
-	url(r'^', include(router.urls))
+	url(r'^', include(router.urls)),
 ]
