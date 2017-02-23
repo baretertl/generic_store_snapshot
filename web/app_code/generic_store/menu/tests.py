@@ -18,4 +18,6 @@ class CategoryGetTest(APITestCase):
 	def test_get_category(self):
 		response = self.client.get('/api/menu/category/')
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
-		self.assertEqual(len(response.data), Category.objects.count())
+		
+		response_obj = response.data
+		self.assertEqual(len(response_obj), Category.objects.count())

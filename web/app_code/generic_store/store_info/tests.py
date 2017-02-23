@@ -9,7 +9,9 @@ class LocationGetTest(APITestCase):
 	def test_get_list(self):
 		response = self.client.get('/api/store_info/location/')
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
-		self.assertEqual(len(response.data), Location.objects.count())
+
+		response_obj = response.data
+		self.assertEqual(len(response_obj), Location.objects.count())
 
 #tests for r'contact_info' url
 class ContactInfoGetTest(APITestCase):
@@ -18,7 +20,9 @@ class ContactInfoGetTest(APITestCase):
 	def test_get_list(self):
 		response = self.client.get('/api/store_info/contact_info/')
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
-		self.assertEqual(len(response.data), ContactInfo.objects.count())
+
+		response_obj = response.data
+		self.assertEqual(len(response_obj), ContactInfo.objects.count())
 
 #tests r'store_hour' url
 class StoreHourGetTest(APITestCase):
@@ -31,4 +35,6 @@ class StoreHourGetTest(APITestCase):
 	def test_get_list(self):
 		response = self.client.get('/api/store_info/store_hour/')
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
-		self.assertEqual(len(response.data), StoreHour.objects.count())
+
+		response_obj = response.data
+		self.assertEqual(len(response_obj), StoreHour.objects.count())
