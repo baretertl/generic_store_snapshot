@@ -1,7 +1,23 @@
 from django.db import models
 from app_locale.models import AppLocaleName
 
+class AppConstantGroup(models.Model):
+	constant_group_code = models.CharField(unique=True, max_length=30, db_index=True)
+	constant_group_name = models.CharField(max_length=500)
+
+	def __str__(self):
+		return self.constant_group_name
+
+class AppConstantGroupTranslate(models.Model):
+	app_constant_group = models.ForeignKey(AppConstantGroup, on_delete=models.CASCADE, related_name='app_constant_group_translate')
+	locale = models.ForeignKey(AppLocaleName, to_field='locale_code', on_delete=models.CASCADE, related_name='app_constant_group_translate_locale')
+	constant_group_name = models.CharField(max_length=500)
+
+	class Meta:
+		unique_together = ('app_constant_group', 'locale', )
+
 class AppConstant(models.Model):
+	app_constant_group = models.ForeignKey(AppConstantGroup, on_delete=models.CASCADE, related_name='app_constant')
 	constant_code = models.CharField(unique=True, max_length=30, db_index=True)
 	constant_value = models.CharField(max_length=500)
 	staff_only = models.BooleanField()

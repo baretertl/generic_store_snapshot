@@ -82,12 +82,16 @@ WSGI_APPLICATION = 'generic_store.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 DATABASES = {
-  'default': 
-  {
+  'default': {
     'ENGINE': os.environ['DJANGO_DATABASE_ENGINE'],
-    'NAME': os.path.join(BASE_DIR, os.environ['DJANGO_DATABASE_NAME']),
+    'NAME': os.environ['DJANGO_DATABASE_NAME'],
+    'USER': os.environ['DJANGO_DATABASE_USER'],
+    'PASSWORD': os.environ['DJANGO_DATABASE_PASSWORD'],
+    'HOST': os.environ['DJANGO_DATABASE_HOST'],
+    'PORT': os.environ['DJANGO_DATABASE_PORT'],
   }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators

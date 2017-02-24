@@ -1,5 +1,4 @@
 import base64
-from requests.auth import HTTPBasicAuth
 from rest_framework import status
 from rest_framework.test import APITestCase
 from .models import User
