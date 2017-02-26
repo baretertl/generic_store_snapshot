@@ -1,11 +1,11 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 from generic_store.settings import LANGUAGE_CODE
-from .models import AppLocaleName
+from .models import LocaleName
 
 #tests for r'get_locale/$' url
 class GetLocaleTest(APITestCase):
-	fixtures = ['app_locale_applocalename.json'] 
+	fixtures = ['app_locale_localename.json'] 
 
 	def test_get_locale(self):
 		response = self.client.get('/api/app_locale/get_locale/')
@@ -16,7 +16,7 @@ class GetLocaleTest(APITestCase):
 
 #tests for r'set_locale/$' url
 class SetLocaleTest(APITestCase):
-	fixtures = ['app_locale_applocalename.json'] 
+	fixtures = ['app_locale_localename.json'] 
 
 	def setUp(self):
 		self.data = { 'locale_code': 'en-us' }
@@ -29,20 +29,20 @@ class SetLocaleTest(APITestCase):
 		self.assertEqual(response_obj['locale_code'], self.data['locale_code'])
 
 #tests for r'^' urls
-class AppLocaleNameGetTest(APITestCase):
-	fixtures = ['app_locale_applocalename.json'] 
+class LocaleNameGetTest(APITestCase):
+	fixtures = ['app_locale_localename.json'] 
 
 	def test_get_list(self):
-		response = self.client.get('/api/app_locale/applocalename/')
+		response = self.client.get('/api/app_locale/locale_name/')
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 		response_obj = response.data
-		self.assertEqual(len(response_obj), AppLocaleName.objects.count())
+		self.assertEqual(len(response_obj), LocaleName.objects.count())
 
 	def test_get(self):
-		response = self.client.get('/api/app_locale/applocalename/1/')
+		response = self.client.get('/api/app_locale/locale_name/1/')
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 		response_obj = response.data
-		model_obj = AppLocaleName.objects.get(pk=1)
+		model_obj = LocaleName.objects.get(pk=1)
 		self.assertEqual(response_obj['locale_code'], model_obj.locale_code)

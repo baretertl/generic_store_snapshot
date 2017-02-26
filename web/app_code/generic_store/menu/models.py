@@ -1,5 +1,5 @@
 from django.db import models
-from app_locale.models import AppLocaleName
+from app_locale.models import LocaleName
 
 class Category(models.Model):
 	category_code = models.CharField(max_length=15, unique=True)
@@ -15,7 +15,7 @@ class Category(models.Model):
 
 class CategoryTranslate(models.Model):
 	category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category_translate')
-	locale = models.ForeignKey(AppLocaleName, to_field='locale_code', on_delete=models.CASCADE, related_name='category_translate_locale')
+	locale = models.ForeignKey(LocaleName, to_field='locale_code', on_delete=models.CASCADE, related_name='category_translate_locale')
 	name = models.CharField(max_length=100)
 	description = models.CharField(max_length=500, blank=True)
 
@@ -39,7 +39,7 @@ class Item(models.Model):
 
 class ItemTranslate(models.Model):
 	item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='item_translate')
-	locale = models.ForeignKey(AppLocaleName, to_field='locale_code', on_delete=models.CASCADE, related_name='item_translate_locale')
+	locale = models.ForeignKey(LocaleName, to_field='locale_code', on_delete=models.CASCADE, related_name='item_translate_locale')
 	name = models.CharField(max_length=100)
 	description = models.CharField(max_length=500, blank=True)
 
@@ -62,7 +62,7 @@ class Variation(models.Model):
 		
 class VariationTranslate(models.Model):
 	variation = models.ForeignKey(Variation, on_delete=models.CASCADE, related_name='variation_translate')
-	locale = models.ForeignKey(AppLocaleName, to_field='locale_code', on_delete=models.CASCADE, related_name='variation_translate_locale')
+	locale = models.ForeignKey(LocaleName, to_field='locale_code', on_delete=models.CASCADE, related_name='variation_translate_locale')
 	name = models.CharField(max_length=100)
 
 	class Meta:

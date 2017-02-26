@@ -1,6 +1,6 @@
 from django.conf.urls import url
-from .views import AppConstantGroupView
+from .views import ConstantGroupView
 
 urlpatterns = [
-	url(r'^app_constant_group', AppConstantGroupView.as_view())
+	url(r'^constant_group', ConstantGroupView.as_view())
 ]

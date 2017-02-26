@@ -5,13 +5,9 @@ from .models import Category
 #tests for r'category' url
 class CategoryGetTest(APITestCase):
 	fixtures = [
-		'app_locale_applocalename.json', 
 		'menu_category.json',
-		'menu_categorytranslate.json', 
 		'menu_item.json',
-		'menu_itemtranslate.json',
 		'menu_variation.json',
-		'menu_variationtranslate.json',
 		'menu_itemchoice.json',
 	]
 

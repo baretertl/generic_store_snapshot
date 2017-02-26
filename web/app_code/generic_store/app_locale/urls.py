@@ -4,7 +4,7 @@ from .views import get_locale, set_locale, AppLocaleNameViewSet
 
 #routers for viewsets
 router = DefaultRouter()
-router.register(r'app_locale_name', AppLocaleNameViewSet)
+router.register(r'locale_name', AppLocaleNameViewSet)
 
 #url patterns
 urlpatterns = [

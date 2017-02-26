@@ -27,9 +27,7 @@ class ContactInfoGetTest(APITestCase):
 #tests r'store_hour' url
 class StoreHourGetTest(APITestCase):
 	fixtures = [
-		'app_locale_applocalename.json',
 		'store_info_storehour.json', 
-		'store_info_storehourtranslate.json',
 	]
 
 	def test_get_list(self):

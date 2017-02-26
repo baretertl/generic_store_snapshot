@@ -53,7 +53,7 @@ class UserDetailGetTest(APITestCase):
 	def test_user_detail_get(self):
 		auth_str = '{}:{}'.format(self.data['email'], self.data['password'])
 		auth_key = base64.b64encode(auth_str.encode()).decode()
-		response = self.client.get('/api/account/{}'.format(self.user.id), HTTP_AUTHORIZATION='Basic {}'.format(auth_key))
+		response = self.client.get('/api/account/detail/{}'.format(self.user.id), HTTP_AUTHORIZATION='Basic {}'.format(auth_key))
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 		response_obj = response.data
@@ -69,7 +69,7 @@ class UserDetailPutTest(APITestCase):
 		auth_str = '{}:{}'.format(self.data['email'], self.data['password'])
 		auth_key = base64.b64encode(auth_str.encode()).decode()
 		put_data = {'email': 'example2@example.com', 'first_name': 'x', 'last_name': 'x' }
-		response = self.client.put('/api/account/{}'.format(self.user.id), put_data, format='json', HTTP_AUTHORIZATION='Basic {}'.format(auth_key))
+		response = self.client.put('/api/account/detail/{}'.format(self.user.id), put_data, format='json', HTTP_AUTHORIZATION='Basic {}'.format(auth_key))
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 		response_obj = response.data
@@ -85,14 +85,14 @@ class UserDetailPatchTest(APITestCase):
 		auth_str = '{}:{}'.format(self.data['email'], self.data['password'])
 		auth_key = base64.b64encode(auth_str.encode()).decode()
 		patch_data = {'old_password': self.data['password'], 'password': '111111111', 'confirm_password': '111111111'}
-		response = self.client.patch('/api/account/{}'.format(self.user.id), patch_data, format='json', HTTP_AUTHORIZATION='Basic {}'.format(auth_key))
+		response = self.client.patch('/api/account/detail/{}'.format(self.user.id), patch_data, format='json', HTTP_AUTHORIZATION='Basic {}'.format(auth_key))
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-		response = self.client.get('/api/account/{}'.format(self.user.id), HTTP_AUTHORIZATION='Basic {}'.format(auth_key))
+		response = self.client.get('/api/account/detail/{}'.format(self.user.id), HTTP_AUTHORIZATION='Basic {}'.format(auth_key))
 		self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 		
 		self.data['password'] = patch_data['password']
 		auth_str = '{}:{}'.format(self.data['email'], self.data['password'])
 		auth_key = base64.b64encode(auth_str.encode()).decode()
-		response = self.client.get('/api/account/{}'.format(self.user.id), HTTP_AUTHORIZATION='Basic {}'.format(auth_key))
+		response = self.client.get('/api/account/detail/{}'.format(self.user.id), HTTP_AUTHORIZATION='Basic {}'.format(auth_key))
 		self.assertEqual(response.status_code, status.HTTP_200_OK)

@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import RegexValidator, MinValueValidator, MaxValueValidator
 from generic_store.settings import LANGUAGE_CODE
-from app_locale.models import AppLocaleName
+from app_locale.models import LocaleName
 
 class Location(models.Model):
 	address_line_1 = models.CharField(max_length=255)
@@ -33,5 +33,5 @@ class StoreHour(models.Model):
 
 class StoreHourTranslate(models.Model):
 	store_hour = models.ForeignKey(StoreHour, on_delete=models.CASCADE, related_name='store_hour_translate')
-	locale = models.ForeignKey(AppLocaleName, to_field='locale_code', on_delete=models.CASCADE, related_name='store_hour_translate_locale')
+	locale = models.ForeignKey(LocaleName, to_field='locale_code', on_delete=models.CASCADE, related_name='store_hour_translate_locale')
 	day = models.CharField(max_length=10)
