@@ -41,6 +41,7 @@ INSTALLED_APPS = [
   'app_locale',
   'app_constant',
   'app_mailer',  
+  'contact_us',
   'menu',
   'store_info',
   'user_interface',

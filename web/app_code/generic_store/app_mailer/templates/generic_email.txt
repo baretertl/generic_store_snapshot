@@ -1,5 +1,0 @@
-Hello {{ user }},
-
-{{ body }}
-
-Thanks.
