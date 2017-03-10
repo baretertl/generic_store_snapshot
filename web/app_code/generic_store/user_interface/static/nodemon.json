@@ -1,0 +1,10 @@
+{
+  "verbose": true,
+  "ignore": [
+  	"css/client.min.css", 
+  	"js/client.min.js", 
+  	"scss/client.temp.js",
+  	"fonts/*"
+ 	], 
+  "ext": "jsx,scss"
+}
