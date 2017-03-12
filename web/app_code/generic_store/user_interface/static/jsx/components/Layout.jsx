@@ -18,6 +18,7 @@ export default class Layout extends React.Component {
         <h1>
           {this.state.title} 
         </h1>
+        <span class="glyphicon glyphicon-asterisk"></span>
       </div>
     );
   }

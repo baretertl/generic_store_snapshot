@@ -1,0 +1,8 @@
+.nav-animate {
+	@include transition(max-height 500ms ease-in);
+	overflow: hidden;
+
+	@media screen and (min-width: $screen-sm) {
+		max-height: 500px !important; /*force the max height to be visible greater than small screen*/
+	}
+}
