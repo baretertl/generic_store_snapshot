@@ -14,7 +14,6 @@ web.env
 *node_modules*
 
 #files compiled via webpack
-client.min.js
-client.min.css
-client.temp.js
-glyphicons-halflings-regular.svg
+*.min.js
+*.min.css
+*.temp.js
