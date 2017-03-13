@@ -79,10 +79,27 @@ module.exports = [{
           'sass-loader'
         ]
       })    
+    }, { 
+      test: /\.svg$/, 
+      use: ['url-loader?limit=65000&mimetype=image/svg+xml&name=fonts/[name].[ext]']
+    }, { 
+      test: /\.woff$/, 
+      use: ['url-loader?limit=65000&mimetype=application/font-woff&name=fonts/[name].[ext]']
+    }, { 
+      test: /\.woff2$/, 
+      use: ['url-loader?limit=65000&mimetype=application/font-woff2&name=fonts/[name].[ext]'] 
+    }, { 
+      test: /\.[ot]tf$/, 
+      use: ['url-loader?limit=65000&mimetype=application/octet-stream&name=fonts/[name].[ext]'] 
+    }, { 
+      test: /\.eot$/, 
+      use: ['url-loader?limit=65000&mimetyp]']
     }, {
-      test: /\.(svg|woff|woff2|[ot]tf|eot)$/,
-      exclude: /^(node_modules|bower_components|js|css)$/,
-      loader: 'url-loader'
+      test: /\.png$/,
+      use: ['url-loader?limit=65000&mimetype=image/png&name=images/[name].[ext]']
+    }, {
+      test: /\.gif$/,
+      use: ['url-loader?limit=65000&mimetype=image/gif&name=images/[name].[ext]']
     }]
   },
   output: {
