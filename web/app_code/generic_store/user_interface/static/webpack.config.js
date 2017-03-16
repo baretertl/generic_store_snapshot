@@ -15,8 +15,8 @@ module.exports = [{
     vendor_history_core: ['history'],
     vendor_react_core: ['react'],
     vendor_redux_core: ['redux'],    
-    vendor_react_addon: ['react-bootstrap', 'react-dom', 'react-redux', 'react-router'],
-    vendor_redux_addon: ['redux-logger', 'redux-thunk'],
+    vendor_react_addon: ['react-dom', 'react-router', 'react-bootstrap'],
+    vendor_redux_addon: ['redux-logger', 'redux-thunk', 'redux-promise-middleware', 'react-redux', 'react-router-redux'],
     client: './jsx/client.jsx'
   },
   context: __dirname,
@@ -93,7 +93,7 @@ module.exports = [{
       use: ['url-loader?limit=65000&mimetype=application/octet-stream&name=fonts/[name].[ext]'] 
     }, { 
       test: /\.eot$/, 
-      use: ['url-loader?limit=65000&mimetyp]']
+      use: ['url-loader?limit=65000&mimetyp=application/vnd.ms-fontobject&name=fonts/[name].[ext]']
     }, {
       test: /\.png$/,
       use: ['url-loader?limit=65000&mimetype=image/png&name=images/[name].[ext]']

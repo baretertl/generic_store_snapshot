@@ -63,7 +63,7 @@ ROOT_URLCONF = 'generic_store.urls'
 TEMPLATES = [
   {
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
-    'DIRS': [],
+    'DIRS': ["static"],
     'APP_DIRS': True,
     'OPTIONS': 
     {

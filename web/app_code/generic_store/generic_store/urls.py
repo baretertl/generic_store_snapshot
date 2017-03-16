@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic.base import TemplateView
+from .settings import DEBUG
 
 urlpatterns = [
   url(r'^admin/', admin.site.urls),
@@ -23,5 +25,9 @@ urlpatterns = [
   url(r'^api/app_locale/', include('app_locale.urls')),
   url(r'^api/contact_us/', include('contact_us.urls')),
   url(r'^api/store_info/', include('store_info.urls')),
-  url(r'^api/menu/', include('menu.urls')),
+  url(r'^api/menu/', include('menu.urls'))
 ]
+
+if(DEBUG):
+  urlpatterns += [url(r'^$', TemplateView.as_view(template_name='index.html'))]
+
