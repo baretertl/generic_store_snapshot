@@ -100,6 +100,9 @@ module.exports = [{
     }, {
       test: /\.gif$/,
       use: ['url-loader?limit=65000&mimetype=image/gif&name=images/[name].[ext]']
+    }, {
+      test: /\.(jpeg|jpg)$/,
+      use: ['url-loader?limit=65000&mimetype=image/jpeg&name=images/[name].[ext]']
     }]
   },
   output: {

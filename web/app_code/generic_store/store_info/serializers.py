@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from generic_store.settings import LANGUAGE_CODE, SESSION_KEY	
-from .models import Location, ContactInfo, StoreHour, StoreHourTranslate
+from .models import Location, ContactInfo, StoreHour, StoreHourTranslate, StoreName
 
 #helper functions for getting translation objects
 def get_current_locale(request):
@@ -51,16 +51,24 @@ class StoreHourSerializer(serializers.ModelSerializer):
 	open_hour = serializers.TimeField(read_only=True)
 	close_hour = serializers.TimeField(read_only=True)
 	#method fields
-	day_translate = serializers.SerializerMethodField(read_only=True)
+	day = serializers.SerializerMethodField(read_only=True)
 
 	class Meta: 
 		model = StoreHour
-		fields = ('id', 'day_code', 'open_hour', 'close_hour', 'day_translate', )
+		fields = ('id', 'day_code', 'open_hour', 'close_hour', 'day', )
 
-	def get_day_translate(self, obj):
+	def get_day(self, obj):
 		request = self.context.get('request')
 		translate_obj = get_store_hour_translate(request, obj)
 		if not translate_obj is None:
 			return translate_obj.day
 
 		return obj.day
+
+class StoreNameSerializer(serializers.ModelSerializer):
+	#fields
+	name = serializers.CharField(max_length=2000, read_only=True)
+
+	class Meta:
+		model = StoreName
+		fields = ('id', 'name')

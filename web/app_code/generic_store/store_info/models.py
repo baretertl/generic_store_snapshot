@@ -35,3 +35,6 @@ class StoreHourTranslate(models.Model):
 	store_hour = models.ForeignKey(StoreHour, on_delete=models.CASCADE, related_name='store_hour_translate')
 	locale = models.ForeignKey(LocaleName, to_field='locale_code', on_delete=models.CASCADE, related_name='store_hour_translate_locale')
 	day = models.CharField(max_length=10)
+
+class StoreName(models.Model):
+	name = models.CharField(max_length=2000)

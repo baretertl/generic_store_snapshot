@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Location, ContactInfo, StoreHour, StoreHourTranslate
+from .models import Location, ContactInfo, StoreHour, StoreHourTranslate, StoreName
 
 class LocationAdmin(admin.ModelAdmin):
 	list_display = ('id', 'address_line_1', 'address_line_2', 'city', 'state_code', 'state_name', 'postal_code', 'country', 'longitude', 'latitude', )
@@ -13,7 +13,11 @@ class StoreHourAdmin(admin.ModelAdmin):
 class StoreHourTranslateAdmin(admin.ModelAdmin):
 	list_display = ('id', 'store_hour', 'locale', 'day', )
 
+class StoreNameAdmin(admin.ModelAdmin):
+	list_display = ('id', 'name', )
+
 admin.site.register(Location, LocationAdmin)
 admin.site.register(ContactInfo, ContactInfoAdmin)
 admin.site.register(StoreHour, StoreHourAdmin)
 admin.site.register(StoreHourTranslate, StoreHourTranslateAdmin)
+admin.site.register(StoreName, StoreNameAdmin)

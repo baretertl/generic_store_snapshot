@@ -6,3 +6,15 @@
 		max-height: 500px !important; /*force the max height to be visible greater than small screen*/
 	}
 }
+
+.header{
+	.header-phone{ 
+		span{
+			display: inline-block;
+			font-size: 15px;
+			font-weight: 700;
+			font-family: 'Open Sans Condensed', sans-serif;
+			color: #898989;
+		}
+	}
+}

@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Location, ContactInfo, StoreHour
-from .serializers import LocationSerializer, ContactInfoSerializer, StoreHourSerializer
+from .models import Location, ContactInfo, StoreHour, StoreName
+from .serializers import LocationSerializer, ContactInfoSerializer, StoreHourSerializer, StoreNameSerializer
 
 class LocationViewSet(viewsets.ReadOnlyModelViewSet):
 	queryset = Location.objects.all()
@@ -13,3 +13,8 @@ class ContactInfoViewSet(viewsets.ReadOnlyModelViewSet):
 class StoreHourViewSet(viewsets.ReadOnlyModelViewSet):
 	queryset = StoreHour.objects.all()
 	serializer_class = StoreHourSerializer
+
+
+class StoreNameViewSet(viewsets.ReadOnlyModelViewSet):
+	queryset = StoreName.objects.all()
+	serializer_class = StoreNameSerializer
