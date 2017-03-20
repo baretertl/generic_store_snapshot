@@ -11,6 +11,7 @@ import Footer from "../components/layout/footer";
 	(store) => {
 		let states = {
 			routing: store.routing,
+			AppConstantState: store.AppConstantState,
 			NavigationState: store.NavigationState,
 			StoreInfoState: store.StoreInfoState
 		};
@@ -24,17 +25,23 @@ import Footer from "../components/layout/footer";
 export default class Layout extends React.Component {
 
   render() {
-  	let { routing, NavigationState, StoreInfoState, actions } = this.props;
+  	let { routing, NavigationState, StoreInfoState, AppConstantState, actions } = this.props;
   	return (
 	    <div class="wrapper">
 	    	<div class="header">
 					<div class="container">
-	    			<Header StoreInfoState={StoreInfoState} />
-	    			<Navigation routing={routing} NavigationState={NavigationState} actions={actions} />
+						<header>
+	    				<Header StoreInfoState={StoreInfoState} />
+	    			</header>
+	    			<nav>
+	    				<Navigation routing={routing} NavigationState={NavigationState} AppConstantState={AppConstantState} actions={actions} />
+	    			</nav>
 	    		</div>
 	    	</div>	    	
 	    	{this.props.children}
-	    	<Footer />
+	    	<footer>
+	    		<Footer />
+	    	</footer>
 	    </div>
     );  	
   }

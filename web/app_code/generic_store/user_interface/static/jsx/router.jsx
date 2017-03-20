@@ -1,7 +1,7 @@
 "use strict";
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { syncHistoryWithStore } from "react-router-redux";
@@ -10,7 +10,7 @@ import { retrieveAppConstants } from "./actions/app-constant-action";
 import { retrieveStoreInfoAll } from "./actions/store-info-action";
 import Layout from "./pages/layout";
 
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(hashHistory, store);
 
 @connect(
 	(store) => {
@@ -51,7 +51,7 @@ export default class PageRouter extends React.Component {
 		let pageRoutes = navigation.map((element) => {
 			let key = element.id;
 			let name = element.constant_code; 
-			let path = element.constant_code; 			
+			let path = `${element.constant_code}`; 			
 			let component = require(`./pages/${name}`).default;
 			if(name === "home") {
 				return (<IndexRoute key={key} component={component} />)

@@ -12,13 +12,12 @@ export default class Header extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.StoreInfoState)
 		if (this.props.StoreInfoState.location === null) {
 			//no data yet, return empty div
 			return <div></div>
 		}
 		let { location, store_hour, contact_info, store_name } = this.props.StoreInfoState;
-
+		store_hour = [].concat(store_hour); //make sure ste state does not get altered
 		//div for store name
 		let storeNameDiv = (
 			<div class="logo">
@@ -27,9 +26,8 @@ export default class Header extends React.Component {
 				</h1>
 			</div>
 		);
-
 		//parse store hours to group them
-		let groupedStoreHour = [];
+		let groupedStoreHour = [];		
 		store_hour.sort((a, b) => {
 			return a.day_code - b.day_code;
 		});
@@ -84,13 +82,13 @@ export default class Header extends React.Component {
 		return (
 			<div class="header-top">
 				<div class="row">
-					<div class="col-md-6 col-sm-6">
+					<div class="col-md-6 text-center">
 						{storeNameDiv}												
 					</div>
-					<div class="col-md-4 col-sm-4 text-right">
+					<div class="col-md-4 text-center">
 						{storeHourDiv}
 					</div>
-					<div class="col-md-2 col-sm-2">
+					<div class="col-md-2 text-center">
 						{phoneDiv}
 					</div>
 				</div>	

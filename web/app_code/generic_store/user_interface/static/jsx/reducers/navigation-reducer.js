@@ -8,7 +8,7 @@ let default_state = {
 //helper functions to manipulate the state
 function setCollapse(currentState, payload) {
 	let newCollapseState = {
-		collapsed: payload.data.collapsed
+		collapsed: payload.collapsed
 	};
 	return Object.assign({}, currentState, newCollapseState);
 }
@@ -17,7 +17,7 @@ function setCollapse(currentState, payload) {
 export default function reducer(state=default_state, action) {
 	switch(action.type) {
 		case "NAVIGATION_SET_COLLAPSE":
-			return toggleCollapse(state, action.payload);
+			return setCollapse(state, action.payload);
 			break;
 		default: 
 			return state;
