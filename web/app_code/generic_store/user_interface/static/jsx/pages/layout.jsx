@@ -34,13 +34,15 @@ export default class Layout extends React.Component {
 	    				<Header StoreInfoState={StoreInfoState} />
 	    			</header>
 	    			<nav>
-	    				<Navigation routing={routing} NavigationState={NavigationState} AppConstantState={AppConstantState} actions={actions} />
+	    				<Navigation routing={routing} NavigationState={NavigationState} AppConstantState={AppConstantState} StoreInfoState={StoreInfoState} actions={actions} />
 	    			</nav>
 	    		</div>
-	    	</div>	    	
-	    	{this.props.children}
+	    	</div>
+	    	<main>
+    			{this.props.children}
+	    	</main>
 	    	<footer>
-	    		<Footer />
+	    		<Footer StoreInfoState={StoreInfoState} />
 	    	</footer>
 	    </div>
     );  	

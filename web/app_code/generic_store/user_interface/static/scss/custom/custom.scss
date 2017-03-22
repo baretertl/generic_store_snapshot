@@ -18,3 +18,13 @@
 		}
 	}
 }
+
+.content-container {
+	@extend .container;
+	background-color: #ffffff;
+}
+
+.content-container-fluid {
+	@extend .container-fluid;
+	background-color: #ffffff;
+}

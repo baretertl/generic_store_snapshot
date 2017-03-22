@@ -15,7 +15,8 @@ const history = syncHistoryWithStore(hashHistory, store);
 @connect(
 	(store) => {
 		let states = {
-			AppConstantState: store.AppConstantState
+			AppConstantState: store.AppConstantState,
+			StoreInfoState: store.StoreInfoState
 		};
 		return states;
 	}, 
@@ -32,7 +33,7 @@ export default class PageRouter extends React.Component {
 	componentWillMount() {
 		//initial list constant code retrieve
 		let constGrpCodes = [
-			"navigation"
+			"navigation"			
 		];
 		this.props.actions.retrieveAppConstants(constGrpCodes);
 		//initial store info retrieve
@@ -41,10 +42,11 @@ export default class PageRouter extends React.Component {
 
 	render() {
 		let navigation = this.props.AppConstantState.navigation;
+		let store_name = this.props.StoreInfoState.store_name;
 
-		if(!navigation) {
+		if(!navigation || !store_name) {
 			//navigations not yet retrieved
-			return (<div>Loading</div>)
+			return (<div class="text-center">Loading...</div>);
 		}
 
 		//navigations retrieved, build routes

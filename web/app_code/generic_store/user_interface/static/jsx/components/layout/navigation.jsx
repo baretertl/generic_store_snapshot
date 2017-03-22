@@ -17,6 +17,7 @@ export default class Navigation extends React.Component {
 	render() {
 		let navigations = this.props.AppConstantState.navigation;
 		let collapsed = this.props.NavigationState.collapsed;
+		let store_name = this.props.StoreInfoState.store_name;
 		//make sure states does not change
 		navigations = [].concat(navigations); 
 		//bind functions to use for events
@@ -54,7 +55,14 @@ export default class Navigation extends React.Component {
 				);
 			}
 		});
-
+		//div for store name
+		let storeNameDiv = (
+			<div class="logo">
+				<h1>
+					{store_name.name}
+				</h1>
+			</div>
+		);
 		let navHeight = {
 			maxHeight: collapsed ? "0px" : "500px"
 		};
@@ -62,6 +70,7 @@ export default class Navigation extends React.Component {
 		return (
 			<div class="row">
 				<div class="col-md-4 col-sm-5">
+					{storeNameDiv}
 				</div>
 				<div class="col-md-8 col-sm-7">
 					<div class="navbar navbar-default navbar-right" role="navigation">

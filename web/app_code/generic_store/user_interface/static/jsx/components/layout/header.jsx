@@ -18,14 +18,6 @@ export default class Header extends React.Component {
 		}
 		let { location, store_hour, contact_info, store_name } = this.props.StoreInfoState;
 		store_hour = [].concat(store_hour); //make sure ste state does not get altered
-		//div for store name
-		let storeNameDiv = (
-			<div class="logo">
-				<h1>
-					{store_name.name}
-				</h1>
-			</div>
-		);
 		//parse store hours to group them
 		let groupedStoreHour = [];		
 		store_hour.sort((a, b) => {
@@ -82,14 +74,13 @@ export default class Header extends React.Component {
 		return (
 			<div class="header-top">
 				<div class="row">
-					<div class="col-md-6 text-center">
-						{storeNameDiv}												
-					</div>
-					<div class="col-md-4 text-center">
-						{storeHourDiv}
-					</div>
 					<div class="col-md-2 text-center">
-						{phoneDiv}
+						{phoneDiv}								
+					</div>
+					<div class="col-md-4 text-center">						
+					</div>
+					<div class="col-md-6 text-center">
+						{storeHourDiv}
 					</div>
 				</div>	
 			</div>
