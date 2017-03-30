@@ -1,5 +1,4 @@
 "use strict";
-
 //initial state
 let default_state = {};
 

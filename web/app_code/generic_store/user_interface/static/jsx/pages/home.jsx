@@ -1,7 +1,7 @@
 "use strict";
 import React from "react";
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import { retrieveAppConstants } from "../actions/app-constant-action";
 import ImageSlider from "../components/common/image-slider";
 import WelcomeText from "../components/home/welcome-text";
@@ -33,9 +33,10 @@ export default class Home extends React.Component {
 	}
 
 	render() {	
+		//redux store states
 		let home_slider_images = this.props.AppConstantState.home_slider_images;
 		let home_welcome_header = this.props.AppConstantState.home_welcome_header;
-		let home_welcome_text = this.props.AppConstantState.home_welcome_text
+		let home_welcome_text = this.props.AppConstantState.home_welcome_text;
 		//make sure states are available
 		if(!home_slider_images) {
 			return (<div></div>);
@@ -55,23 +56,22 @@ export default class Home extends React.Component {
 			header: home_welcome_header[0].constant_value,
 			text: home_welcome_text[0].constant_value
 		};
-
 		return (
 			<article>
 				<div class="content-container-fluid ">
 					<div class="row">
-						<div class="col-lg-1 col-sm-0"></div>
-						<div class="col-lg-5 col-sm-12 page-content">
+						<div class="col-lg-12">
+							<section>
+								<ImageSlider ItemsList={SliderList} interval={5000} />
+							</section>		
+						</div>
+						<div class="col-lg-3 col-sm-0"></div>
+						<div class="col-lg-6 col-sm-12 page-content">
 							<section>
 								<WelcomeText WelcomeTextData={WelcomeTextData} />
 							</section>							
 						</div>
-						<div class="col-lg-5 col-sm-12 page-content">
-							<section>
-								<ImageSlider ItemsList={SliderList} interval={7000} />
-							</section>					
-						</div>
-						<div class="col-lg-1 col-sm-0"></div>							
+						<div class="col-lg-3 col-sm-0"></div>				
 					</div>				
 				</div>
 			</article>

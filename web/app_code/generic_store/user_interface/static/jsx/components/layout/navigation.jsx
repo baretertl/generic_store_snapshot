@@ -4,25 +4,33 @@ import { IndexLink, Link } from "react-router";
 
 export default class Navigation extends React.Component {
 
+	constructor(props) {
+		super(props);
+		this.state = {
+			collapsed: false
+		}
+	}
+
 	isActiveClass(path) {
 		let routing = this.props.routing;
 		return path === routing.locationBeforeTransitions.pathname;
 	}
 
 	toggleCollapse() {
-		let NavigationState = this.props.NavigationState;
-		this.props.actions.toggleCollapse(NavigationState.collapsed);
+		let collapsed = !this.state.collapsed;
+		this.setState({collapsed})
 	}
 
 	render() {
+		//component state
+		let collapsed = this.state.collapsed;
+		//redux store states
 		let navigations = this.props.AppConstantState.navigation;
-		let collapsed = this.props.NavigationState.collapsed;
 		let store_name = this.props.StoreInfoState.store_name;
 		//make sure states does not change
 		navigations = [].concat(navigations); 
 		//bind functions to use for events
 		this.toggleCollapse = this.toggleCollapse.bind(this);
-
 		navigations.sort((a, b) =>{
 			return a.id - b.id;
 		});
@@ -66,7 +74,6 @@ export default class Navigation extends React.Component {
 		let navHeight = {
 			maxHeight: collapsed ? "0px" : "500px"
 		};
-
 		return (
 			<div class="row">
 				<div class="col-md-4 col-sm-5">

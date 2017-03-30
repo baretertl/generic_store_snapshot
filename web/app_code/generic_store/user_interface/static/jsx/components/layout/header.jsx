@@ -12,7 +12,9 @@ export default class Header extends React.Component {
 	}
 
 	render() {
-		if (this.props.StoreInfoState.location === null) {
+		//redux store states
+		let StoreInfoState = this.props.StoreInfoState;		
+		if (StoreInfoState.location === null) {
 			//no data yet, return empty div
 			return <div></div>
 		}
@@ -60,7 +62,6 @@ export default class Header extends React.Component {
 				{storeHourDiv}
 			</div>
 		);
-
 		//div for phone		
 		let phoneDiv = ( 
 			<div class="header-contact">

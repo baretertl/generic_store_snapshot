@@ -3,6 +3,7 @@ import React from "react";
 
 export default class WelcomeText extends React.Component {
 	render() {	
+		//props
 		let WelcomeTextData = this.props.WelcomeTextData;
 		return (
 			<div class="padd">

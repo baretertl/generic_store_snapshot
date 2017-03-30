@@ -41,14 +41,13 @@ export default class PageRouter extends React.Component {
 	}
 
 	render() {
+		//redux store states
 		let navigation = this.props.AppConstantState.navigation;
 		let store_name = this.props.StoreInfoState.store_name;
-
 		if(!navigation || !store_name) {
 			//navigations not yet retrieved
 			return (<div class="text-center">Loading...</div>);
 		}
-
 		//navigations retrieved, build routes
 		let pageRoutes = navigation.map((element) => {
 			let key = element.id;

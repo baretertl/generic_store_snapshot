@@ -6,17 +6,18 @@ import { Carousel } from "react-bootstrap";
 export default class ImageSlider extends React.Component {
 
 	render() {	
+		//props
 		let itemsList = this.props.ItemsList;
 		let interval = this.props.interval;
+		//default interval
 		if(!interval) {
 			interval = 5000;
 		}
-
+		//image style
 		let imgStyle = {
 			maxHeight: "300px",
 			margin: "0 auto"
 		};
-
 		let carouselList = itemsList.map((element, index) => {
 			if(element.caption) {
 				return (

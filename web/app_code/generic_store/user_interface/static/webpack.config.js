@@ -15,7 +15,7 @@ module.exports = [{
     vendor_history_core: ['history'],
     vendor_react_core: ['react'],
     vendor_redux_core: ['redux'],    
-    vendor_react_addon: ['react-dom', 'react-router', 'react-bootstrap'],
+    vendor_react_addon: ['react-dom', 'react-router', 'react-bootstrap', 'google-maps-react'],
     vendor_redux_addon: ['redux-logger', 'redux-thunk', 'redux-promise-middleware', 'react-redux', 'react-router-redux'],
     client: './jsx/client.jsx'
   },
