@@ -13,30 +13,27 @@ export default class ImageSlider extends React.Component {
 		if(!interval) {
 			interval = 5000;
 		}
-		//image style
-		let imgStyle = {
-			maxHeight: "300px",
-			margin: "0 auto"
-		};
 		let carouselList = itemsList.map((element, index) => {
 			if(element.caption) {
 				return (
 					<Carousel.Item key={`sldrItm${element.slider_code}${index}`}>
-						<img key={`sldrImg${element.slider_code}${index}`} class="img-responsive" style={imgStyle} src={element.imageurl} />
+						<img key={`sldrImg${element.slider_code}${index}`} class="img-responsive slider-image" src={element.imageurl} />
 						<Carousel.Caption key={`sldrCptn${element.slider_code}${index}`}>
-							<h3 key={`sldrCptnTtl${element.slider_code}${index}`}>
-								{element.caption.title}
-							</h3>
-							<p key={`sldrCptnBdy${element.slider_code}${index}`}>
-								{element.caption.body}
-							</p>
+							<div class="slider-caption">
+								<h3 key={`sldrCptnTtl${element.slider_code}${index}`}>
+									{element.caption.title}
+								</h3>
+								<p key={`sldrCptnBdy${element.slider_code}${index}`}>
+									{element.caption.body}
+								</p>
+							</div>
 						</Carousel.Caption>
 					</Carousel.Item>
 				)
 			}
 			return (
 				<Carousel.Item key={`sldrItm${element.slider_code}${index}`}>
-					<img key={`sldrImg${element.slider_code}${index}`} class="img-responsive" style={imgStyle} src={element.imageurl} />
+					<img key={`sldrImg${element.slider_code}${index}`} class="img-responsive slider-image" src={element.imageurl} />
 				</Carousel.Item>
 			)
 		});

@@ -16,7 +16,7 @@ export default class Header extends React.Component {
 		let StoreInfoState = this.props.StoreInfoState;		
 		if (StoreInfoState.location === null) {
 			//no data yet, return empty div
-			return <div></div>
+			return (<div></div>);
 		}
 		let { location, store_hour, contact_info, store_name } = this.props.StoreInfoState;
 		store_hour = [].concat(store_hour); //make sure ste state does not get altered
@@ -45,13 +45,13 @@ export default class Header extends React.Component {
 		//build divs for store hour
 		let storeHourDiv = groupedStoreHour.map((element, index) => {
 			if(element.day_start === element.day_end){
-				return (<div key={index}>
+				return (<div key={`hdr${index}`}>
 					<span>
 						{element.day_start}: {this.formatTime(element.open_hour)} - {this.formatTime(element.close_hour)}
 					</span>
 				</div>);
 			}
-			return (<div key={index}>
+			return (<div key={`hdr${index}`}>
 				<span>
 					{element.day_start} - {element.day_end}: {this.formatTime(element.open_hour)} - {this.formatTime(element.close_hour)}
 				</span>

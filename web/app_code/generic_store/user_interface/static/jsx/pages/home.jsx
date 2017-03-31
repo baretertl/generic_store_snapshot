@@ -42,14 +42,14 @@ export default class Home extends React.Component {
 			return (<div></div>);
 		}
 		//creater slider list
-		let SliderList = [];
+		let sliderList = [];
 		home_slider_images.forEach((element) => {
-			let SliderItem = {
+			let sliderItem = {
 				slider_code: 'home_slider',
 				imageurl: element.constant_value,
 				caption: null
 			};
-			SliderList.push(SliderItem);
+			sliderList.push(sliderItem);
 		});
 		//create welcome text objects
 		let WelcomeTextData = {
@@ -62,7 +62,7 @@ export default class Home extends React.Component {
 					<div class="row">
 						<div class="col-lg-12">
 							<section>
-								<ImageSlider ItemsList={SliderList} interval={5000} />
+								<ImageSlider ItemsList={sliderList} interval={5000} />
 							</section>		
 						</div>
 						<div class="col-lg-3 col-sm-0"></div>

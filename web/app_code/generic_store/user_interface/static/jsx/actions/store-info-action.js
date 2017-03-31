@@ -2,7 +2,7 @@
 import Axios from "axios";
 
 export function retrieveStoreInfoAll() {
-	//setup for api call to retrieve constants
+	//setup for api call to retrieve store info
 	let locationPromise = Axios.get("/api/store_info/location/");
 	let contactInfoPromise = Axios.get("/api/store_info/contact_info/");
 	let storeHourPromise = Axios.get("/api/store_info/store_hour/");
