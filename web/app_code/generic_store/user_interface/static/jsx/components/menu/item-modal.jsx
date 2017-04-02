@@ -1,14 +1,11 @@
 "use strict";
 import React from "react";
 import { Modal } from "react-bootstrap";
+import { formatCurrency } from "../../utility/utils";
 import ImageSlider from "../common/image-slider";
 import DropdownSelect from "../common/dropdown-select";
 
 export default class ItemModal extends React.Component {
-
-	formatCurrency(number) {
-		return "$" + number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-	}
 
 	constructor(props) {
 		super(props);
@@ -101,7 +98,7 @@ export default class ItemModal extends React.Component {
 			priceOpts = item.variation.map((element, index) => {
 				return {
 					value: element.id,
-					text: `${element.name}: ${this.formatCurrency(element.price)}`,
+					text: `${element.name}: ${formatCurrency(element.price)}`,
 					object: { variation_id: element.id }
 				}
 			});
@@ -109,7 +106,7 @@ export default class ItemModal extends React.Component {
 		else {
 			priceOpts.push({
 				value: item.id,
-				text: `${item.name}: ${this.formatCurrency(item.price)}`,
+				text: `${item.name}: ${formatCurrency(item.price)}`,
 				object: null
 			});
 		}

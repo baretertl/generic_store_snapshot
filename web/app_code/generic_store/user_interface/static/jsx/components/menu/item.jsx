@@ -1,5 +1,6 @@
 "use strict";
 import React from "react";
+import { formatCurrency } from "../../utility/utils";
 import ItemModal from "./item-modal";
 
 export default class Item extends React.Component {
@@ -17,10 +18,6 @@ export default class Item extends React.Component {
 
 	hideModal() {
 		this.setState({show: false});
-	}
-
-	formatCurrency(number) {
-		return "$" + number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 	}
 
 	render() {	
@@ -41,7 +38,7 @@ export default class Item extends React.Component {
 					<li key={index} class="list-group-item text-left item-price">
 						{element.name}
 						<span class="badge">
-			    		{this.formatCurrency(element.price)}
+			    		{formatCurrency(element.price)}
 	    			</span>
 					</li>
 				);
@@ -51,7 +48,7 @@ export default class Item extends React.Component {
 			priceDiv = (
 			  <li class="list-group-item text-left item-price">				    
 			    <span class="badge">
-			    	{this.formatCurrency(item.price)}
+			    	{formatCurrency(item.price)}
 	    		</span>
 			  </li>
 			);

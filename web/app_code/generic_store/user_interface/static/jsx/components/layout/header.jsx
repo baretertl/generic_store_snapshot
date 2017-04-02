@@ -1,15 +1,8 @@
 "use strict";
 import React from "react";
+import { formatTime } from "../../utility/utils";
 
 export default class Header extends React.Component {
-
-	formatTime(timeString) {
-		let timeArr = timeString.split(":").map((element) => { return parseInt(element, 10) });
-		if(timeArr[0] > 12) {
-			return `${timeArr[0] - 12}:${timeArr[1] !== 0 ? timeArr[1]: "00" } pm`;
-		}
-		return `${timeArr[0]}:${timeArr[1] !== 0 ? timeArr[1]: "00" } am`;
-	}
 
 	render() {
 		//redux store states
@@ -48,7 +41,7 @@ export default class Header extends React.Component {
 				return (
 					<div key={index}>
 						<span>
-							{element.day_start}: {this.formatTime(element.open_hour)} - {this.formatTime(element.close_hour)}
+							{element.day_start}: {formatTime(element.open_hour)} - {formatTime(element.close_hour)}
 						</span>
 					</div>
 				);
@@ -56,7 +49,7 @@ export default class Header extends React.Component {
 			return (
 				<div key={index}>
 					<span>
-						{element.day_start} - {element.day_end}: {this.formatTime(element.open_hour)} - {this.formatTime(element.close_hour)}
+						{element.day_start} - {element.day_end}: {formatTime(element.open_hour)} - {formatTime(element.close_hour)}
 					</span>
 				</div>
 			);
