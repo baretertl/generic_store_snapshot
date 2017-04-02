@@ -38,7 +38,7 @@ export default class Item extends React.Component {
 			//price div with variations
 			priceDiv = variation.map((element, index) => {
 				return (
-					<li key={`vrtnLst${index}`} class="list-group-item text-left item-price">
+					<li key={index} class="list-group-item text-left item-price">
 						{element.name}
 						<span class="badge">
 			    		{this.formatCurrency(element.price)}

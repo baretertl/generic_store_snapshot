@@ -16,14 +16,14 @@ export default class ImageSlider extends React.Component {
 		let carouselList = itemsList.map((element, index) => {
 			if(element.caption) {
 				return (
-					<Carousel.Item key={`sldrItm${element.slider_code}${index}`}>
-						<img key={`sldrImg${element.slider_code}${index}`} class="img-responsive slider-image" src={element.imageurl} />
-						<Carousel.Caption key={`sldrCptn${element.slider_code}${index}`}>
+					<Carousel.Item key={index}>
+						<img class="img-responsive slider-image" src={element.imageurl} />
+						<Carousel.Caption >
 							<div class="slider-caption">
-								<h3 key={`sldrCptnTtl${element.slider_code}${index}`}>
+								<h3>
 									{element.caption.title}
 								</h3>
-								<p key={`sldrCptnBdy${element.slider_code}${index}`}>
+								<p>
 									{element.caption.body}
 								</p>
 							</div>
@@ -32,8 +32,8 @@ export default class ImageSlider extends React.Component {
 				)
 			}
 			return (
-				<Carousel.Item key={`sldrItm${element.slider_code}${index}`}>
-					<img key={`sldrImg${element.slider_code}${index}`} class="img-responsive slider-image" src={element.imageurl} />
+				<Carousel.Item key={index}>
+					<img class="img-responsive slider-image" src={element.imageurl} />
 				</Carousel.Item>
 			)
 		});

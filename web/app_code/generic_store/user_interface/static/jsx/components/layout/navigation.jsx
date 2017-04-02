@@ -40,9 +40,9 @@ export default class Navigation extends React.Component {
 			let active = this.isActiveClass(path);
 			if(element.constant_code === "home") {
 				return (
-					<li key={`li${index}`} onClick={this.toggleCollapse}>
-						<IndexLink key={`link${index}`} to={path}>
-							<img key={`img${index}`} class="img-responsive" src={imageUrl}  alt="" />
+					<li key={index} onClick={this.toggleCollapse}>
+						<IndexLink to={path}>
+							<img class="img-responsive" src={imageUrl}  alt="" />
 							<div class={active ? 'active' : ''}>
 								{element.constant_value}
 							</div>
@@ -52,9 +52,9 @@ export default class Navigation extends React.Component {
 			}
 			else{
 				return (
-					<li key={`li${index}`} onClick={this.toggleCollapse}>
-						<Link key={`link${index}`} to={path}>
-							<img key={`img${index}`} class="img-responsive" src={imageUrl} alt="" />
+					<li key={index} onClick={this.toggleCollapse}>
+						<Link to={path}>
+							<img class="img-responsive" src={imageUrl} alt="" />
 							<div class={active ? 'active' : ''}>
 								{element.constant_value}
 							</div>

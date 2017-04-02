@@ -37,8 +37,8 @@ export default class Menu extends React.Component {
 		let categories = menu.category;
 		let categoryDiv = categories.map((element, index) => {
 			return (
-				<div key={`ctgryRow${index}`} class="row">
-					<Category key={`ctgryObj${index}`} category={element} />
+				<div key={index} class="row">
+					<Category category={element} />
 				</div>
 			);
 		});

@@ -45,17 +45,21 @@ export default class Header extends React.Component {
 		//build divs for store hour
 		let storeHourDiv = groupedStoreHour.map((element, index) => {
 			if(element.day_start === element.day_end){
-				return (<div key={`hdr${index}`}>
-					<span>
-						{element.day_start}: {this.formatTime(element.open_hour)} - {this.formatTime(element.close_hour)}
-					</span>
-				</div>);
+				return (
+					<div key={index}>
+						<span>
+							{element.day_start}: {this.formatTime(element.open_hour)} - {this.formatTime(element.close_hour)}
+						</span>
+					</div>
+				);
 			}
-			return (<div key={`hdr${index}`}>
-				<span>
-					{element.day_start} - {element.day_end}: {this.formatTime(element.open_hour)} - {this.formatTime(element.close_hour)}
-				</span>
-			</div>);
+			return (
+				<div key={index}>
+					<span>
+						{element.day_start} - {element.day_end}: {this.formatTime(element.open_hour)} - {this.formatTime(element.close_hour)}
+					</span>
+				</div>
+			);
 		});
 		storeHourDiv = (
 			<div class="header-phone">

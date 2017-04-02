@@ -10,8 +10,8 @@ export default class Category extends React.Component {
 		//item div
 		let itemDivs = items.map((element, index) => {
 			return (
-				<div key={`itemDiv${index}`} class="col-lg-3 col-md-6 col-sm-12 menu-item-height">
-					<Item key={`itemObj${index}`} item={element} />
+				<div key={index} class="col-lg-3 col-md-6 col-sm-12 menu-item-height">
+					<Item item={element} />
 					<br />
 				</div>
 			)
