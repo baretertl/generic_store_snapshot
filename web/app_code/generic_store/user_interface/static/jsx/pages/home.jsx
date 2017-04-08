@@ -52,23 +52,21 @@ export default class Home extends React.Component {
 			sliderList.push(sliderItem);
 		});
 		//create welcome text objects
-		let WelcomeTextData = {
-			header: home_welcome_header[0].constant_value,
-			text: home_welcome_text[0].constant_value
-		};
+		let welcomeHeader = home_welcome_header[0].constant_value;
+		let welcomeBody = home_welcome_text[0].constant_value;
 		return (
 			<article>
 				<div class="content-container-fluid ">
 					<div class="row">
 						<div class="col-lg-12">
 							<section>
-								<ImageSlider ItemsList={sliderList} interval={5000} />
+								<ImageSlider itemsList={sliderList} />
 							</section>		
 						</div>
 						<div class="col-lg-3 col-sm-0"></div>
 						<div class="col-lg-6 col-sm-12 page-content">
 							<section>
-								<WelcomeText WelcomeTextData={WelcomeTextData} />
+								<WelcomeText header={welcomeHeader} body={welcomeBody} />
 							</section>							
 						</div>
 						<div class="col-lg-3 col-sm-0"></div>				

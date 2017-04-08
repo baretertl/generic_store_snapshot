@@ -16,9 +16,11 @@ export default class ItemModal extends React.Component {
 	}
 
 	onEntered() {
+		//props
+		let item = this.props.item;
 		//set up available item choices
 		let itemChoiceObj = null;
-		for (let key in this.props.item.item_choice) {
+		for (let key in item.item_choice) {
 			if(itemChoiceObj === null){
 				itemChoiceObj = {};
 			}
@@ -28,7 +30,10 @@ export default class ItemModal extends React.Component {
 	}
 
 	variationChange(value, object) {
-		let variation = this.props.item.variation;
+		//props
+		let item = this.props.item;
+		//get variation
+		let variation = item.variation;
 		if(variation.length > 0) {
 			//find the variation object with same id
 			let selectedVariation = variation.find((element) => {
@@ -39,7 +44,11 @@ export default class ItemModal extends React.Component {
 	}
 
 	itemChoiceChange(value, object){
-		let item_choice = this.props.item.item_choice;
+		//props 
+		debugger;
+		let item = this.props.item
+		//get item choice
+		let item_choice = item.item_choice;
 		let choiceKey = object.choice;
 		//find the choice
 		let choiceObj = item_choice[choiceKey];
@@ -132,7 +141,7 @@ export default class ItemModal extends React.Component {
 					<h4>
         		Select your side: 
         	</h4>
-        	<DropdownSelect id={`item-side-select${key}`} options={choiceOpts} defaultTitle={"Make a Selection"} onChange={this.itemChoiceChange} />
+        	<DropdownSelect id={`item-side-select-${item.id}-${key}`} options={choiceOpts} defaultTitle={"Make a Selection"} onChange={this.itemChoiceChange} />
 				</div>
 			);
 		}
@@ -147,7 +156,7 @@ export default class ItemModal extends React.Component {
         	<div class="content-container-fluid">
         		<div class="row">
         			<div class="col-md-6 col-sm-12">
-        				<ImageSlider ItemsList={sliderList} Interval={7000} />
+        				<ImageSlider itemsList={sliderList} />
         			</div>
         			<div class="col-md-6 col-sm-12">
         				<div class="content-container-fluid dish-detail">
@@ -163,7 +172,7 @@ export default class ItemModal extends React.Component {
         							<h4>
         								Select your item: 
         							</h4>
-        							<DropdownSelect id={`item-price-select${item.id}`} options={priceOpts} defaultTitle={"Make a Selection"} onChange={this.variationChange} />
+        							<DropdownSelect id={`item-price-select-${item.id}`} options={priceOpts} defaultTitle={"Make a Selection"} onChange={this.variationChange} />
         						</div>
         					</div>
         					<div class="row">
@@ -177,4 +186,10 @@ export default class ItemModal extends React.Component {
 			</Modal>
 		);		
 	}
+}
+
+ItemModal.propTypes = {
+	show: React.PropTypes.bool.isRequired,
+	onHide: React.PropTypes.func.isRequired,
+	item: React.PropTypes.object.isRequired
 }

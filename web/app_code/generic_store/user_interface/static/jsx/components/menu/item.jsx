@@ -86,3 +86,7 @@ export default class Item extends React.Component {
 		);
 	}
 }
+
+Item.propTypes = {
+	item: React.PropTypes.object.isRequired
+}

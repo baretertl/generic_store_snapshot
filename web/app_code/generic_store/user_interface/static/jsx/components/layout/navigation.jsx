@@ -25,16 +25,17 @@ export default class Navigation extends React.Component {
 		//component state
 		let collapsed = this.state.collapsed;
 		//redux store states
-		let navigations = this.props.AppConstantState.navigation;
-		let store_name = this.props.StoreInfoState.store_name;
-		//make sure states does not change
-		navigations = [].concat(navigations); 
+		let navigation = this.props.navigation;
+		let storeName = this.props.storeName;
+		//make data immutable
+		navigation = [].concat(navigation); 
 		//bind functions to use for events
 		this.toggleCollapse = this.toggleCollapse.bind(this);
-		navigations.sort((a, b) =>{
+		//sort navigation
+		navigation.sort((a, b) =>{
 			return a.id - b.id;
 		});
-		let navMenus = navigations.map((element, index) => {
+		let navMenus = navigation.map((element, index) => {
 			let path = element.constant_code === "home" ? '/' : `/${element.constant_code}`;
 			let imageUrl = `static/images/nav-menu/${element.constant_code}.jpg`;
 			let active = this.isActiveClass(path);
@@ -67,7 +68,7 @@ export default class Navigation extends React.Component {
 		let storeNameDiv = (
 			<div class="logo">
 				<h1>
-					{store_name.name}
+					{storeName}
 				</h1>
 			</div>
 		);
@@ -101,4 +102,10 @@ export default class Navigation extends React.Component {
 			</div>
 		);
 	}
+}
+
+Navigation.propTypes = {
+	routing: React.PropTypes.object.isRequired,
+	navigation: React.PropTypes.array.isRequired,
+	storeName: React.PropTypes.string.isRequired
 }

@@ -3,16 +3,20 @@ import React from "react";
 
 export default class Footer extends React.Component {
 	render() {	
-		//redux store states
-		let store_name = this.props.StoreInfoState.store_name;
+		//props
+		let storeName = this.props.storeName;
 		return (
 			<div class="footer">
 				<div class="footer-copyright">
 					<p>
-						Copyright &copy; {store_name.name} All Rights Reserved
+						Copyright &copy; {storeName} All Rights Reserved
 					</p>
 				</div>
 			</div>			
 		);
 	}
+}
+
+Footer.propTypes = {
+	storeName: React.PropTypes.string.isRequired
 }

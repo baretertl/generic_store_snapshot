@@ -20,16 +20,23 @@ export default class Layout extends React.Component {
 
   render() {
   	//redux store states
-  	let { routing, StoreInfoState, AppConstantState, actions } = this.props;  	
+  	let routing = this.props.routing;
+  	let StoreInfoState = this.props.StoreInfoState;
+  	let AppConstantState = this.props.AppConstantState;
+  	//actions
+  	let actions = this.props.actions;
+  	if(!StoreInfoState.store_name || !AppConstantState.navigation) {
+  		return (<div></div>);
+  	}
   	return (
 	    <div class="wrapper">
 	    	<div class="header">
 					<div class="container">
 						<header>
-	    				<Header StoreInfoState={StoreInfoState} />
+	    				<Header storeHour={StoreInfoState.store_hour} contactInfo={StoreInfoState.contact_info} />
 	    			</header>
 	    			<nav>
-	    				<Navigation routing={routing} AppConstantState={AppConstantState} StoreInfoState={StoreInfoState} actions={actions} />
+	    				<Navigation routing={routing} navigation={AppConstantState.navigation} storeName={StoreInfoState.store_name.name} />
 	    			</nav>
 	    		</div>
 	    	</div>
@@ -37,7 +44,7 @@ export default class Layout extends React.Component {
     			{this.props.children}
 	    	</main>
 	    	<footer>
-	    		<Footer StoreInfoState={StoreInfoState} />
+	    		<Footer storeName={StoreInfoState.store_name.name} />
 	    	</footer>
 	    </div>
     );  	

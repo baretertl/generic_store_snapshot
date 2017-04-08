@@ -53,3 +53,14 @@ export default class DropdownSelect extends React.Component {
 		);
 	}
 }
+
+DropdownSelect.propTypes = {
+	onChange: React.PropTypes.func,
+	options: React.PropTypes.array.isRequired,
+	defaultTitle: React.PropTypes.string.isRequired,
+	id: React.PropTypes.string.isRequired
+}
+
+DropdownSelect.defaultProps = {
+	onChange: () => {}
+}

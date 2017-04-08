@@ -5,20 +5,18 @@ import { formatTime } from "../../utility/utils";
 export default class Header extends React.Component {
 
 	render() {
-		//redux store states
-		let StoreInfoState = this.props.StoreInfoState;		
-		if (StoreInfoState.location === null) {
-			//no data yet, return empty div
-			return (<div></div>);
-		}
-		let { location, store_hour, contact_info, store_name } = this.props.StoreInfoState;
-		store_hour = [].concat(store_hour); //make sure ste state does not get altered
+		//props	
+		let storeHour = this.props.storeHour;
+		let contactInfo = this.props.contactInfo;
+		//make data immutable
+		storeHour = [].concat(storeHour); 
 		//parse store hours to group them
 		let groupedStoreHour = [];		
-		store_hour.sort((a, b) => {
+		//sort storehour
+		storeHour.sort((a, b) => {
 			return a.day_code - b.day_code;
 		});
-		store_hour.forEach((element) => {
+		storeHour.forEach((element) => {
 			let groupLen = groupedStoreHour.length;
 			if(groupLen === 0 || 
 				 groupedStoreHour[groupLen - 1].open_hour !== element.open_hour ||
@@ -64,7 +62,7 @@ export default class Header extends React.Component {
 			<div class="header-contact">
 				<span>
 					<i class="fa fa-phone red"></i> 
-						{contact_info.phone_number}
+						{contactInfo.phone_number}
 				</span>
 			</div>
 		);
@@ -84,4 +82,9 @@ export default class Header extends React.Component {
 			</div>
 		);
 	}
+}
+
+Header.propTypes = {
+	storeHour: React.PropTypes.array.isRequired,
+	contactInfo: React.PropTypes.object.isRequired
 }

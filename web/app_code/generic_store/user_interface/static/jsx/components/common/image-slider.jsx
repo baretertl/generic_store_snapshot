@@ -7,12 +7,9 @@ export default class ImageSlider extends React.Component {
 
 	render() {	
 		//props
-		let itemsList = this.props.ItemsList;
+		let itemsList = this.props.itemsList;
 		let interval = this.props.interval;
-		//default interval
-		if(!interval) {
-			interval = 5000;
-		}
+		//list of items
 		let carouselList = itemsList.map((element, index) => {
 			if(element.caption) {
 				return (
@@ -44,4 +41,13 @@ export default class ImageSlider extends React.Component {
 			</Carousel>	
 		);
 	}
+}
+
+ImageSlider.propTypes = {
+	itemsList: React.PropTypes.array.isRequired,
+	interval: React.PropTypes.number
+}
+
+ImageSlider.defaultProps = {
+	interval: 5000
 }
