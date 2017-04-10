@@ -11,3 +11,9 @@ export function formatTime(timeString) {
 	}
 	return `${timeArr[0]}:${timeArr[1] !== 0 ? timeArr[1]: "00" } am`;
 }
+
+export function camelize(string, spliter=' ') {
+  return string.split(spliter).map((word) => {
+  	return word.charAt(0).toUpperCase() + word.slice(1);
+  }).join('');
+}

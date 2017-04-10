@@ -55,9 +55,9 @@ export default class PageRouter extends React.Component {
 			let path = `${element.constant_code}`; 			
 			let component = require(`./pages/${name}`).default;
 			if(name === "home") {
-				return (<IndexRoute key={key} component={component} />)
+				return (<IndexRoute key={key} component={component} />);
 			}
-			return (<Route key={key} path={path} name={name} component={component} />)			
+			return (<Route key={key} path={path} name={name} component={component} />);			
 		});
 		return (
 			<Router history={history}>
