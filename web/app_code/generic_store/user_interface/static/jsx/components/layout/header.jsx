@@ -5,9 +5,7 @@ import { formatTime } from "../../utility/utils";
 export default class Header extends React.Component {
 
 	render() {
-		//props	
-		let storeHour = this.props.storeHour;
-		let contactInfo = this.props.contactInfo;
+		let { storeHour, contactInfo } = this.props;
 		//make data immutable
 		storeHour = [].concat(storeHour); 
 		//parse store hours to group them

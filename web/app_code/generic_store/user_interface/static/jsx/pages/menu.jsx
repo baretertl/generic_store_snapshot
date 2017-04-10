@@ -26,12 +26,13 @@ export default class Menu extends React.Component {
 		this.props.actions.retrieveMenu();
 	}
 
-	render() {	
-		//redux store states
-		let menu = this.props.MenuState.menu;
+	render() {
+		let { MenuState } = this.props;
+		//get menu
+		let menu = MenuState.menu;
 		//make sure states are available		
 		if(!menu){
-			return (<div></div>);
+			return (<div>Loading...</div>);
 		}
 
 		let categories = menu.category;

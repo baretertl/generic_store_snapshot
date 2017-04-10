@@ -4,8 +4,8 @@ import Item from "./item";
 
 export default class Category extends React.Component {
 	render() {	
-		//props
-		let category = this.props.category;
+		let { category } = this.props;
+		//get items
 		let items = category.item;
 		//item div
 		let itemDivs = items.map((element, index) => {

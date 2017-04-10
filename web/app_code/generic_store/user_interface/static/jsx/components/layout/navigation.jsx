@@ -9,28 +9,25 @@ export default class Navigation extends React.Component {
 		this.state = {
 			collapsed: false
 		}
+		//bind functions to use for events
+		this.toggleCollapse = this.toggleCollapse.bind(this);
 	}
 
 	isActiveClass(path) {
-		let routing = this.props.routing;
+		let { routing } = this.props;
 		return path === routing.locationBeforeTransitions.pathname;
 	}
 
 	toggleCollapse() {
-		let collapsed = !this.state.collapsed;
-		this.setState({collapsed})
+		let { collapsed } = this.state;
+		this.setState({ collapsed: !collapsed })
 	}
 
-	render() {
-		//component state
-		let collapsed = this.state.collapsed;
-		//redux store states
-		let navigation = this.props.navigation;
-		let storeName = this.props.storeName;
+	render() {		
+		let { navigation, storeName } = this.props;
+		let { collapsed } = this.state;
 		//make data immutable
 		navigation = [].concat(navigation); 
-		//bind functions to use for events
-		this.toggleCollapse = this.toggleCollapse.bind(this);
 		//sort navigation
 		navigation.sort((a, b) =>{
 			return a.id - b.id;

@@ -1,7 +1,6 @@
 "use strict";
 //from https://gist.github.com/auser/1d55aa3897f15d17caf21dc39b85b663
 //modified to make it simpler and take the api key as a prop
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cache from '../../utility/script-cache';

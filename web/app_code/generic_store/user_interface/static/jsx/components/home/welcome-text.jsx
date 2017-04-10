@@ -3,9 +3,7 @@ import React from "react";
 
 export default class WelcomeText extends React.Component {
 	render() {	
-		//props
-		let header = this.props.header;
-		let body = this.props.body;
+		let { header, body } = this.props;
 		return (
 			<div class="padd">
 				<div class="default-heading">

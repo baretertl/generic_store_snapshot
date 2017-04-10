@@ -19,10 +19,7 @@ import Footer from "../components/layout/footer";
 export default class Layout extends React.Component {
 
   render() {
-  	//redux store states
-  	let routing = this.props.routing;
-  	let StoreInfoState = this.props.StoreInfoState;
-  	let AppConstantState = this.props.AppConstantState;
+  	let { routing, StoreInfoState, AppConstantState } = this.props;
   	//actions
   	let actions = this.props.actions;
   	if(!StoreInfoState.store_name || !AppConstantState.navigation) {

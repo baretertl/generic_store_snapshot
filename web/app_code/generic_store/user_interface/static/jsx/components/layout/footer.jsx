@@ -3,8 +3,7 @@ import React from "react";
 
 export default class Footer extends React.Component {
 	render() {	
-		//props
-		let storeName = this.props.storeName;
+		let { storeName } = this.props;
 		return (
 			<div class="footer">
 				<div class="footer-copyright">

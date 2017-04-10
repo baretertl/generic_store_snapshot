@@ -7,8 +7,7 @@ export default class ImageSlider extends React.Component {
 
 	render() {	
 		//props
-		let itemsList = this.props.itemsList;
-		let interval = this.props.interval;
+		let { itemsList, interval } = this.props;
 		//list of items
 		let carouselList = itemsList.map((element, index) => {
 			if(element.caption) {

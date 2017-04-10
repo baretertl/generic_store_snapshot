@@ -7,6 +7,7 @@ export default class DropdownSelect extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { selectedValue: null }
+		this.valueChanged = this.valueChanged.bind(this);
 	}
 
 	valueChanged(newValue, newObj) {
@@ -17,12 +18,7 @@ export default class DropdownSelect extends React.Component {
 	}
 
 	render() {	
-		//props
-		let options = this.props.options;
-		let defaultTitle = this.props.defaultTitle;
-		let id = this.props.id;
-		//bind functions needed
-		this.valueChanged = this.valueChanged.bind(this);
+		let { options, defaultTitle, id } = this.props;
 		//create the menu items
 		let displayTitle = defaultTitle;
 		let maxTitleLength = displayTitle.length;

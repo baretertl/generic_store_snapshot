@@ -13,11 +13,14 @@ export default class ItemModal extends React.Component {
 			variation: null,
 			item_choice: null
 		}
+		//bind functions
+		this.onEntered = this.onEntered.bind(this);
+		this.variationChange = this.variationChange.bind(this);
+		this.itemChoiceChange = this.itemChoiceChange.bind(this);
 	}
 
 	onEntered() {
-		//props
-		let item = this.props.item;
+		let { item } = this.props;
 		//set up available item choices
 		let itemChoiceObj = null;
 		for (let key in item.item_choice) {
@@ -30,8 +33,7 @@ export default class ItemModal extends React.Component {
 	}
 
 	variationChange(value, object) {
-		//props
-		let item = this.props.item;
+		let { item } = this.props;
 		//get variation
 		let variation = item.variation;
 		if(variation.length > 0) {
@@ -44,9 +46,7 @@ export default class ItemModal extends React.Component {
 	}
 
 	itemChoiceChange(value, object){
-		//props 
-		debugger;
-		let item = this.props.item
+		let { item } = this.props;
 		//get item choice
 		let item_choice = item.item_choice;
 		let choiceKey = object.choice;
@@ -67,14 +67,8 @@ export default class ItemModal extends React.Component {
 	}
 	
 	render() {	
-		//props
-		let show = this.props.show;
-		let onHide = this.props.onHide;
-		let item = this.props.item;
+		let { show, item } = this.props;
 		//bind functions
-		this.onEntered = this.onEntered.bind(this);
-		this.variationChange = this.variationChange.bind(this);
-		this.itemChoiceChange = this.itemChoiceChange.bind(this);
 		//create slider list 
 		let sliderList = [];
 		if (item.variation.length > 0) {
@@ -146,7 +140,7 @@ export default class ItemModal extends React.Component {
 			);
 		}
 		return (
-			<Modal show={show} onHide={onHide} onEntered={this.onEntered} bsSize="large">
+			<Modal show={show} onHide={this.props.onHide} onEntered={this.onEntered} bsSize="large">
 				<Modal.Header closeButton>
           <Modal.Title bsClass="text-center">
           	{item.name}

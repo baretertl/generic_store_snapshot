@@ -33,10 +33,9 @@ export default class Home extends React.Component {
 	}
 
 	render() {	
+		let { AppConstantState } = this.props;
 		//redux store states
-		let home_slider_images = this.props.AppConstantState.home_slider_images;
-		let home_welcome_header = this.props.AppConstantState.home_welcome_header;
-		let home_welcome_text = this.props.AppConstantState.home_welcome_text;
+		let { home_slider_images, home_welcome_header, home_welcome_text } = AppConstantState;
 		//make sure states are available
 		if(!home_slider_images) {
 			return (<div></div>);

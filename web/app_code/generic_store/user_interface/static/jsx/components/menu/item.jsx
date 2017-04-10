@@ -10,6 +10,9 @@ export default class Item extends React.Component {
 		this.state = {
 			show: false
 		}
+		//bind functions
+		this.showModal = this.showModal.bind(this);
+		this.hideModal = this.hideModal.bind(this);
 	}
 
 	showModal() {
@@ -21,11 +24,7 @@ export default class Item extends React.Component {
 	}
 
 	render() {	
-		//props
-		let item = this.props.item;
-		//bind functions
-		this.showModal = this.showModal.bind(this);
-		this.hideModal = this.hideModal.bind(this);
+		let { item } = this.props;
 		//for now use a dummy image url
 		let imageUrl = item.image_url === "None" ? "static/images/dish/dish" + Math.floor(Math.random() * 10 + 10) + ".jpg"  : this.item.image_url;
 		//price div
