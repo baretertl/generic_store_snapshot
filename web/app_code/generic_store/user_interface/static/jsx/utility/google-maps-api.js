@@ -3,6 +3,8 @@
 
 export const GoogleApi = function(opts) {
   opts = opts || {}
+  //keep whatever window.google was already loaded, otherwise set to null
+  let google = window.google = window.google ? window.google : null;
 
   const apiKey = opts.apiKey;
   const libraries = opts.libraries || [];
@@ -10,8 +12,7 @@ export const GoogleApi = function(opts) {
   const URL = 'https://maps.googleapis.com/maps/api/js';
 
   const googleVersion = '3.26';
-  let script = null;
-  let google = window.google = null;
+  let script = null;  
   let loading = false;
   let channel = null;
   let language = null;

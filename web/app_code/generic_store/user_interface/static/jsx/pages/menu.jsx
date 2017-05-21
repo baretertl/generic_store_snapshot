@@ -22,8 +22,11 @@ import Category from "../components/menu/category";
 export default class Menu extends React.Component {
 
 	componentWillMount() {
-		//retrieve slider image constants
-		this.props.actions.retrieveMenu();
+		let { MenuState } = this.props;
+		if(!MenuState.menu) {
+			//retrieve slider image constants
+			this.props.actions.retrieveMenu();
+		}
 	}
 
 	render() {

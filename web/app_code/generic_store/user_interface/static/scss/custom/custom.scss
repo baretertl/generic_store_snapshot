@@ -2,7 +2,7 @@
 	@include transition(max-height 500ms ease-in);
 	overflow: hidden;
 
-	@media screen and (min-width: $screen-sm) {
+	@media (min-width: #{$screen-sm}) {
 		max-height: 500px !important; /*force the max height to be visible greater than small screen*/
 	}
 }
@@ -57,6 +57,16 @@
 	&h1, h2, h3, h4, h5, h6, p {
 		color: white;
 	}
+}
+
+.location-google-map {
+	height: 80vh;
+	width: 100vh;
+
+	@media (min-width: #{$screen-md}) {
+		height: 40vh;
+		width: 100%;
+	}	
 }
 
 .google-map {

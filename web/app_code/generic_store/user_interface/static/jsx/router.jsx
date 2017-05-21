@@ -31,13 +31,18 @@ const history = syncHistoryWithStore(hashHistory, store);
 export default class PageRouter extends React.Component {
 
 	componentWillMount() {
-		//initial list constant code retrieve
-		let constGrpCodes = [
-			"navigation"			
-		];
-		this.props.actions.retrieveAppConstants(constGrpCodes);
-		//initial store info retrieve
-		this.props.actions.retrieveStoreInfoAll();
+		let { AppConstantState, StoreInfoState } = this.props;
+		if(!AppConstantState.navigation) {
+			let constGrpCodes = [
+				"navigation"			
+			];
+			this.props.actions.retrieveAppConstants(constGrpCodes);
+		}
+
+		if( !StoreInfoState.store_name) {
+			//initial store info retrieve
+			this.props.actions.retrieveStoreInfoAll();
+		}		
 	}
 
 	render() {		

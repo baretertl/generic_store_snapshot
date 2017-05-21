@@ -23,13 +23,16 @@ import WelcomeText from "../components/home/welcome-text";
 export default class Home extends React.Component {
 
 	componentWillMount() {
-		//retrieve slider image constants
-		let constGrpCodes = [
-			"home_slider_images",
-			"home_welcome_header",
-			"home_welcome_text",
-		];
-		this.props.actions.retrieveAppConstants(constGrpCodes);
+		let { AppConstantState } = this.props;
+		if(!AppConstantState.home_slider_images){
+			//retrieve slider image constants
+			let constGrpCodes = [
+				"home_slider_images",
+				"home_welcome_header",
+				"home_welcome_text",
+			];
+			this.props.actions.retrieveAppConstants(constGrpCodes);
+		}
 	}
 
 	render() {	

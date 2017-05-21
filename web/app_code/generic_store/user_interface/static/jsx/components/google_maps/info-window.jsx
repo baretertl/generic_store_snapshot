@@ -59,7 +59,6 @@ export default class InfoWindow extends React.Component {
   }
 
   onClose() {
-  	debugger;
   	this.props.onClose();
   }
 
